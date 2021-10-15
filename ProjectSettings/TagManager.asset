@@ -38,6 +38,15 @@ TagManager:
   - 
   - 
   m_SortingLayers:
+  - name: Road
+    uniqueID: 1629987429
+    locked: 0
+  - name: Triggers
+    uniqueID: 3453203551
+    locked: 0
+  - name: Landscape
+    uniqueID: 3357809263
+    locked: 0
   - name: Default
     uniqueID: 0
     locked: 0

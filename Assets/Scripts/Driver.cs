@@ -21,10 +21,14 @@ public class Driver : MonoBehaviour
 
         if (input_move < 0) {
             input_move /= retroScaleFactor;
+            input_turn /= retroScaleFactor;
+            input_turn = -input_turn;
         }
 
-        Rotate(-input_turn * rotationSpeed * Time.deltaTime);
-        Move(input_move * engineForce * Time.deltaTime);    
+        if (Mathf.Abs(input_move) > 0.001) {
+            Rotate(-input_turn * rotationSpeed * Time.deltaTime);
+            Move(input_move * engineForce * Time.deltaTime);
+        }
     }
 
 
