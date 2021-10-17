@@ -40,4 +40,9 @@ public class Driver : MonoBehaviour
         //Vector3 force = Vector3.forward * amount;
         transform.Translate(0, amount, 0);
     }
+
+    void OnCollisionEnter2D(Collision2D other) {
+        Debug.Log("Ouch!");
+        EventManager.current.Crash();
+    }
 }

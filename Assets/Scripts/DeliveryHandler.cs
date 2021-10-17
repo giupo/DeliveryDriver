@@ -18,9 +18,6 @@ public class DeliveryHandler : MonoBehaviour {
         EventManager.onDelivery -= onDelivery;
     }
 
-    void OnCollisionEnter2D(Collision2D other) {
-        Debug.Log("Ouch!");
-    }
 
     void OnTriggerEnter2D(Collider2D other)
     {

@@ -17,6 +17,7 @@ public class EventManager : MonoBehaviour
 	public void GameOver() => onGameOver?.Invoke();
     public void Delivery() => onDelivery?.Invoke();
     public void PickUp() => onPickUp?.Invoke();
+    public void Crash() => onCrash?.Invoke();
 
 	public delegate void GameOverAction();
     public static event GameOverAction onGameOver;
@@ -26,4 +27,7 @@ public class EventManager : MonoBehaviour
     public static event PickUpAction onPickUp;
     public delegate void DeliveryAction();
     public static event DeliveryAction onDelivery;
+
+    public delegate void CrashAction();
+    public static event CrashAction onCrash;
 }
