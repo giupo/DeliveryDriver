@@ -8,18 +8,18 @@ public class EventManager : MonoBehaviour
         if (current != null) {
             Destroy(gameObject);
             return;
-        }        
+        }
 
         current = this;
         DontDestroyOnLoad(gameObject);
     }
 
-	public void GameOver() => onGameOver?.Invoke();
+    public void GameOver() => onGameOver?.Invoke();
     public void Delivery() => onDelivery?.Invoke();
     public void PickUp() => onPickUp?.Invoke();
     public void Crash() => onCrash?.Invoke();
 
-	public delegate void GameOverAction();
+    public delegate void GameOverAction();
     public static event GameOverAction onGameOver;
 
 

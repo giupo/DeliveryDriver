@@ -22,8 +22,8 @@ public class AudioManager : MonoBehaviour
         EventManager.onDelivery -= onDelivery;
         EventManager.onCrash -= onCrash;
     }
-    
-    void onPickUp() {        
+
+    void onPickUp() {
         audioSource.volume = 1f;
         audioSource.PlayOneShot(pickupClip);
     }

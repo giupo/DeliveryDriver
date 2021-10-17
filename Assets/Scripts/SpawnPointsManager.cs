@@ -18,7 +18,7 @@ public class SpawnPointsManager : MonoBehaviour
 
     void OnEnable() {
         EventManager.onPickUp += onPickUp;
-        EventManager.onDelivery += onDelivery;        
+        EventManager.onDelivery += onDelivery;
     }
 
     void OnDisable() {
@@ -38,13 +38,15 @@ public class SpawnPointsManager : MonoBehaviour
 
         int first = Random.Range(0, spawnPoints.Length);
         // extract excluding first.
-        var range = Enumerable.Range(0, spawnPoints.Length).Where(i => i != first);        
+        var range = Enumerable.Range(0, spawnPoints.Length).Where(i => i != first);
         var rand = new System.Random();
         int index = rand.Next(0, spawnPoints.Length - 1);
         int second = range.ElementAt(index);
 
         pickup_instance = Instantiate(pickup, spawnPoints[first].position, Quaternion.identity);
         delivery_instance = Instantiate(delivery, spawnPoints[second].position, Quaternion.identity);
+
+        Debug.Log(sqrDistance(first, second));
     }
 
     void onPickUp() {
@@ -56,5 +58,9 @@ public class SpawnPointsManager : MonoBehaviour
         Destroy(delivery_instance);
         delivery_instance = null;
         SpawnPoints();
+    }
+
+    float sqrDistance(int first, int second) {
+        return (spawnPoints[first].position - spawnPoints[second].position).sqrMagnitude;
     }
 }

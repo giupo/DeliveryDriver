@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class DeliveryHandler : MonoBehaviour {
 
-    [SerializeField] bool hasPackage = false;
+    private bool hasPackage = false;
 
     void Start() {
         hasPackage = false;
@@ -22,14 +22,12 @@ public class DeliveryHandler : MonoBehaviour {
     void OnTriggerEnter2D(Collider2D other)
     {
         if(other.tag == "PickUp" && !hasPackage) {
-            Debug.Log("PickUp");            
             EventManager.current.PickUp();
-        }   
+        }
 
         if(other.tag == "Delivery" && hasPackage) {
-            Debug.Log("Delivery");
             EventManager.current.Delivery();
-        } 
+        }
     }
 
     void onPickUp() {
