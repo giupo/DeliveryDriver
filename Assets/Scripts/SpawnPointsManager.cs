@@ -16,15 +16,16 @@ public class SpawnPointsManager : MonoBehaviour
         SpawnPoints();
     }
 
-    public void OnEnable()
-    {
-        EventManager.onDelivery += SpawnPoints;
+    void OnEnable() {
+        EventManager.onPickUp += onPickUp;
+        EventManager.onDelivery += onDelivery;        
     }
 
-    public void OnDisable()
-    {
-        EventManager.onDelivery -= SpawnPoints;
+    void OnDisable() {
+        EventManager.onDelivery -= onDelivery;
+        EventManager.onPickUp -= onPickUp;
     }
+
     void SpawnPoints() {
 
         if (pickup_instance != null) {
@@ -44,5 +45,16 @@ public class SpawnPointsManager : MonoBehaviour
 
         pickup_instance = Instantiate(pickup, spawnPoints[first].position, Quaternion.identity);
         delivery_instance = Instantiate(delivery, spawnPoints[second].position, Quaternion.identity);
+    }
+
+    void onPickUp() {
+        Destroy(pickup_instance);
+        pickup_instance = null;
+    }
+
+    void onDelivery() {
+        Destroy(delivery_instance);
+        delivery_instance = null;
+        SpawnPoints();
     }
 }

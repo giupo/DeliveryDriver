@@ -5,16 +5,14 @@ public class EventManager : MonoBehaviour
     public static EventManager current;
 
     private void Awake() {
+        if (current != null) {
+            Destroy(gameObject);
+            return;
+        }        
+
         current = this;
+        DontDestroyOnLoad(gameObject);
     }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
-
 
 	public void GameOver() => onGameOver?.Invoke();
     public void Delivery() => onDelivery?.Invoke();
