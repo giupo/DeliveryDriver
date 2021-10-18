@@ -33,7 +33,7 @@ public class AudioManager : MonoBehaviour
         audioSource.PlayOneShot(deliveryClip);
     }
 
-    void onCrash() {
+    void onCrash(int damages) {
         int index = Random.Range(0, crashSounds.Length);
         audioSource.volume = 1f;
         audioSource.PlayOneShot(crashSounds[index]);

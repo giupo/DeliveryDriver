@@ -42,6 +42,14 @@ public class Driver : MonoBehaviour
     }
 
     void OnCollisionEnter2D(Collision2D other) {
-        EventManager.current.Crash();
+        int damages = 0;
+        if (other.gameObject.tag == "House") {
+            damages = 500;
+        } else if (other.gameObject.tag == "Rock") {
+            damages = 300;
+        } else if (other.gameObject.tag == "Tree") {
+            damages = 100;
+        }
+        EventManager.current.Crash(damages);
     }
 }

@@ -17,7 +17,10 @@ public class EventManager : MonoBehaviour
     public void GameOver() => onGameOver?.Invoke();
     public void Delivery() => onDelivery?.Invoke();
     public void PickUp() => onPickUp?.Invoke();
-    public void Crash() => onCrash?.Invoke();
+    public void Crash(int damages) => onCrash?.Invoke(damages);
+    public void PackagePaid(int parcel) => onPackagePaid?.Invoke(parcel);
+
+    public void PointsChanged(int points) => onPointsChange?.Invoke(points);
 
     public delegate void GameOverAction();
     public static event GameOverAction onGameOver;
@@ -28,6 +31,12 @@ public class EventManager : MonoBehaviour
     public delegate void DeliveryAction();
     public static event DeliveryAction onDelivery;
 
-    public delegate void CrashAction();
+    public delegate void CrashAction(int damages);
     public static event CrashAction onCrash;
+
+    public delegate void PackagePaidAction(int parcel);
+    public static event PackagePaidAction onPackagePaid;
+
+    public delegate void PointsChangeAction(int points);
+    public static event PointsChangeAction onPointsChange;
 }

@@ -46,7 +46,8 @@ public class SpawnPointsManager : MonoBehaviour
         pickup_instance = Instantiate(pickup, spawnPoints[first].position, Quaternion.identity);
         delivery_instance = Instantiate(delivery, spawnPoints[second].position, Quaternion.identity);
 
-        Debug.Log(sqrDistance(first, second));
+        int parcel = Mathf.RoundToInt(sqrDistance(first, second));
+        EventManager.current.PackagePaid(parcel);
     }
 
     void onPickUp() {
