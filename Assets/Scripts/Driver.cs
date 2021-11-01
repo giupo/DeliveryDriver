@@ -1,21 +1,16 @@
 using UnityEngine;
 
-public class Driver : MonoBehaviour
-{
+public class Driver : MonoBehaviour {
     // Start is called before the first frame update
     [SerializeField] float rotationSpeed;
     [SerializeField] float engineForce;
     [SerializeField] float retroScaleFactor;
 
 
-    void Start()
-    {
-        
-    }
+    void Start() {}
 
     // Update is called once per frame
-    void Update()
-    {
+    void Update() {
         float input_turn = Input.GetAxis("Horizontal");
         float input_move = Input.GetAxis("Vertical");
 
@@ -43,6 +38,7 @@ public class Driver : MonoBehaviour
 
     void OnCollisionEnter2D(Collision2D other) {
         int damages = 0;
+
         if (other.gameObject.tag == "House") {
             damages = 500;
         } else if (other.gameObject.tag == "Rock") {
@@ -50,6 +46,7 @@ public class Driver : MonoBehaviour
         } else if (other.gameObject.tag == "Tree") {
             damages = 100;
         }
+
         EventManager.current.Crash(damages);
     }
 }
